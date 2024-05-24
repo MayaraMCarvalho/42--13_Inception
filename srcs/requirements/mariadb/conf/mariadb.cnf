@@ -1,0 +1,16 @@
+[mysqld]
+# MariaDB port
+port = 3306
+
+# Data Directory
+datadir = /var/lib/mysql
+
+# MariaDB socket
+socket = /var/run/mysqld/mysqld.sock
+
+# User data
+user = root
+
+# Network connection settings
+skip-networking = false
+bind-address = 0.0.0.0
