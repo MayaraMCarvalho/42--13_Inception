@@ -1,0 +1,11 @@
+MYSQL_ROOT_PASSWORD=sua_senha_root
+MYSQL_DATABASE=wordpress
+MYSQL_USER=seu_usuario
+MYSQL_PASSWORD=sua_senha
+
+WORDPRESS_DB_HOST=mariadb:3306
+WORDPRESS_DB_USER=seu_usuario
+WORDPRESS_DB_PASSWORD=sua_senha
+WORDPRESS_DB_NAME=wordpress
+
+DOMAIN_NAME=seu_login.42.fr
