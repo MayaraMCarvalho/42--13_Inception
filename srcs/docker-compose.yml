@@ -1,6 +1,30 @@
 version: "3.8"
 
 #*************************************#
+#-------------- Volumes --------------#
+#*************************************#
+volumes:
+  mariadb:
+    name: mariadb
+    external: true
+  wordpress:
+    name: wordpress
+    external: true
+  static:
+    name: static
+    external: true
+
+
+#*************************************#
+#-------------- Networks -------------#
+#*************************************#
+networks:
+  inception:
+    name: inception
+    driver: bridge
+
+
+#*************************************#
 #------- Services (Containers) -------#
 #*************************************#
 services:
@@ -56,9 +80,13 @@ services:
       context: ./requirements/nginx
       dockerfile: Dockerfile
       args:
-        - DOMAIN_NAME=${DOMAIN_NAME}
-        - CERTS_KEY=${CERTS_KEY}
-        - CERTS_CRT=${CERTS_CRT}
+        # - DOMAIN_NAME=${DOMAIN_NAME}
+        # - CERTS_KEY=${CERTS_KEY}
+        # - CERTS_CRT=${CERTS_CRT}
+        - DOMAIN_NAME
+        - CERTS_KEY
+        - CERTS_CRT
+
     networks:
       - inception
     ports:
@@ -71,28 +99,6 @@ services:
       - mariadb
       - wordpress
       - static
-
-#*************************************#
-#-------------- Volumes --------------#
-#*************************************#
-volumes:
-  mariadb:
-    name: mariadb
-    external: true
-  wordpress:
-    name: wordpress
-    external: true
-  static:
-    name: static
-    external: true
-
-#*************************************#
-#-------------- Networks -------------#
-#*************************************#
-networks:
-  inception:
-    name: inception
-    driver: bridge
 
 
 #*************************************#
