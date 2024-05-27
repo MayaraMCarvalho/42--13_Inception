@@ -12,7 +12,7 @@ RUN			apt -y install nginx openssl
 
 # Generate self-signed certificate
 RUN			openssl req -x509 -sha256 -nodes -newkey rsa:4096 -days 365 \
-			-subj "/C=BR/ST=Sao Paulo/L=Sao Paulo/O=42SP/OU=Inception/CN=cado-car.42.fr" \
+			-subj "/C=BR/ST=Sao Paulo/L=Sao Paulo/O=42SP/OU=Inception/CN=macarval.42.fr" \
 			-keyout ${CERTS_KEY} -out ${CERTS_CRT}
 
 # Guarantee that Nginx is using TSLv1.3
