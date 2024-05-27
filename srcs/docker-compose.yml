@@ -20,11 +20,11 @@ services:
         - MYSQL_USER
         - MYSQL_PASSWORD
         - MYSQL_ROOT_PASSWORD
-      networks:
-        - inception
-      volumes:
-        - mariadb:/var/lib/mysql
-      restart: always
+    networks:
+      - inception
+    volumes:
+      - mariadb:/var/lib/mysql
+    restart: always
 
   wordpress:
     image: wordpress:42
