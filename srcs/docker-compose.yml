@@ -138,18 +138,18 @@ services:
 #   depends_on:
 #     - nginx
 
-# static:
-#   container_name: static
-#   image: static:42
-#   init: true
-#   build:
-#     context: ./requirements/bonus/static-website
-#     dockerfile: Dockerfile
-#   networks:
-#     - inception
-#   volumes:
-#     - static:/usr/src/app
-#   restart: always
+static:
+  container_name: static
+  image: static:42
+  init: true
+  build:
+    context: ./requirements/bonus/static-website
+    dockerfile: Dockerfile
+  networks:
+    - inception
+  volumes:
+    - static:/usr/src/app
+  restart: always
 
 # adminer:
 #   container_name: adminer
