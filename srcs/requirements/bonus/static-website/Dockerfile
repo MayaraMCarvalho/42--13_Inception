@@ -2,29 +2,20 @@
 FROM		debian:oldstable
 
 # Update and upgrade system & install nodejs and npm
-RUN			apt -y update && apt -y upgrade
-RUN			apt -y install nodejs npm
+RUN			apt update &&  apt upgrade -y && apt install -y
+RUN			nginx openssl && rm -rf /var/lib/apt/lists/*
 
-# Create the working directory
-RUN			mkdir -p /usr/src/app
+RUN			openssl req -batch -x509 -sha256 -nodes -newkey rsa:2048 -days 365 \
+			-keyout /etc/ssl/private/private.key \
+			-out /etc/ssl/certs/certificate.crt \
+			-subj "/C=BR/ST=SP/L=SãoPaulo/O=42sp/CN=macarval.42.fr"
 
-# Set the working directory
-WORKDIR		/usr/src/app
+# Copy the package nginx file
+COPY		./conf/nginx.conf /etc/nginx/conf.d
 
-# Copy the package.json file
-COPY		./conf/package*.json .
-
-# Install the dependencies
-RUN			npm install
-
-# Copy the source code
-RUN			mkdir -p /usr/src/app/public
-COPY		./srcs/public/* /usr/src/app/public/
-RUN			mkdir -p /usr/src/app/src
-COPY		./srcs/src/* /usr/src/app/src/
-
-# Expose port
-EXPOSE		3000
+# Permissions
+RUN		chmod 755 /var/www/html &&
+RUN		chown -R www-data:www-data /var/www/html
 
 # Run the application
-ENTRYPOINT	[ "npm", "start" ]
+ENTRYPOINT ["nginx", "-g", "daemon off;"]
