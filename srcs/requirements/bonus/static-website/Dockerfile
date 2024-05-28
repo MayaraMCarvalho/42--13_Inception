@@ -9,10 +9,10 @@ RUN			apt update &&  apt upgrade -y
 RUN			apt install -y nginx openssl
 RUN			rm -rf /var/lib/apt/lists/*
 
-RUN			openssl req -batch -x509 -sha256 -nodes -newkey rsa:2048 -days 365 \
-			-keyout /etc/ssl/private/${CERTS_KEY} \
-			-out /etc/ssl/certs/${CERTS_CRT} \
-			-subj "/C=BR/ST=SP/L=SãoPaulo/O=42sp/CN=macarval.42.fr"
+# Generate self-signed certificate
+RUN 		openssl req -x509 -sha256 -nodes -newkey rsa:4096 -days 365 \
+			-subj "/C=BR/ST=Sao Paulo/L=Sao Paulo/O=42SP/OU=Inception/CN=macarval.42.fr" \
+			-keyout ${CERTS_KEY} -out ${CERTS_CRT}
 
 # Copy the package nginx file
 COPY		./tools/index.html /usr/share/nginx/html
