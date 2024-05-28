@@ -1,22 +1,8 @@
-
-# # Define build arguments passed from docker-compose.yml
-# ARG			DOMAIN_NAME
-# ARG			CERTS_KEY
-# ARG			CERTS_CRT
-
-# # Copy configuration file
-# COPY		./conf/https.conf /etc/nginx/conf.d/
-# RUN			sed -i "s|INSERT_DOMAIN_NAME_HERE|${DOMAIN_NAME}|g" /etc/nginx/conf.d/https.conf
-# RUN			sed -i "s|INSERT_KEY_PATH_HERE|${CERTS_KEY}|g" /etc/nginx/conf.d/https.conf
-# RUN			sed -i "s|INSERT_CRT_PATH_HERE|${CERTS_CRT}|g" /etc/nginx/conf.d/https.conf
-# COPY 		./conf/http.conf /etc/nginx/conf.d/
-# RUN			sed -i "s|INSERT_DOMAIN_NAME_HERE|${DOMAIN_NAME}|g" /etc/nginx/conf.d/https.conf
-
-
 # Base image
 FROM		debian:oldstable
 
 # Define build arguments passed from docker-compose.yml
+ARG			DOMAIN_NAME
 ARG			CERTS_KEY
 ARG			CERTS_CRT
 
@@ -33,8 +19,14 @@ RUN 		openssl req -x509 -sha256 -nodes -newkey rsa:4096 -days 365 \
 # Guarantee that Nginx is using TSLv1.3
 RUN 		sed -i 's/ssl_protocols.*/ssl_protocols TLSv1.3;/' /etc/nginx/nginx.conf
 
+# Copy configuration file
 COPY		./conf/https.conf /etc/nginx/conf.d/
+RUN			sed -i "s|macarval.42.fr|${DOMAIN_NAME}|g" /etc/nginx/conf.d/https.conf
+RUN			sed -i "s|/etc/ssl/private/|${CERTS_KEY}|g" /etc/nginx/conf.d/https.conf
+RUN			sed -i "s|/etc/ssl/certs/|${CERTS_CRT}|g" /etc/nginx/conf.d/https.conf
+
 COPY		./conf/http.conf /etc/nginx/conf.d/
+RUN			sed -i "s|macarval.42.fr|${DOMAIN_NAME}|g" /etc/nginx/conf.d/https.conf
 
 RUN			chmod 755 /var/www/html
 RUN			chown -R www-data:www-data /var/www/html
@@ -44,3 +36,12 @@ EXPOSE 		443
 
 # Run NGINX
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
+
+
+
+# COPY		./conf/https.conf /etc/nginx/conf.d/
+# RUN			sed -i "s|INSERT_DOMAIN_NAME_HERE|${DOMAIN_NAME}|g" /etc/nginx/conf.d/https.conf
+# RUN			sed -i "s|INSERT_KEY_PATH_HERE|${CERTS_KEY}|g" /etc/nginx/conf.d/https.conf
+# RUN			sed -i "s|INSERT_CRT_PATH_HERE|${CERTS_CRT}|g" /etc/nginx/conf.d/https.conf
+# COPY 		./conf/http.conf /etc/nginx/conf.d/
+# RUN			sed -i "s|INSERT_DOMAIN_NAME_HERE|${DOMAIN_NAME}|g" /etc/nginx/conf.d/https.conf
