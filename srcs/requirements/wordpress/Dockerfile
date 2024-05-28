@@ -37,7 +37,7 @@ RUN			bash /usr/local/bin/init.sh
 RUN			mkdir -p /var/www/html/wp-content/uploads/2024/02/
 # COPY		./conf/uploads/* /var/www/html/wp-content/uploads/2024/02/                              ?????????????
 RUN			chmod -R 755 /var/www/html/wp-content/uploads/
-RUN			chmod 644 /var/www/html/wp-content/uploads/2024/02/*
+# RUN			chmod 644 /var/www/html/wp-content/uploads/2024/02/*
 RUN			chown -R www-data:www-data /var/www/html/wp-content/uploads/
 
 # Copy Entrypoint script
