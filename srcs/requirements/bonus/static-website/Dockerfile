@@ -20,8 +20,8 @@ COPY		./tools/imgs /usr/share/nginx/html/imgs
 COPY		./conf/nginx.conf /etc/nginx/conf.d
 
 # Permissions
-RUN		chmod 755 /var/www/html
-RUN		chown -R www-data:www-data /var/www/html
+RUN			chmod 755 /var/www/html
+RUN			chown -R www-data:www-data /var/www/html
 
 # Run the application
-ENTRYPOINT ["nginx", "-g", "daemon off;"]
+ENTRYPOINT	["nginx", "-g", "daemon off;"]
