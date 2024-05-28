@@ -12,6 +12,8 @@ RUN			openssl req -batch -x509 -sha256 -nodes -newkey rsa:2048 -days 365 \
 			-subj "/C=BR/ST=SP/L=SãoPaulo/O=42sp/CN=macarval.42.fr"
 
 # Copy the package nginx file
+COPY		./tools/index.html /usr/share/nginx/html
+COPY		./tools/imgs /usr/share/nginx/html/imgs
 COPY		./conf/nginx.conf /etc/nginx/conf.d
 
 # Permissions
