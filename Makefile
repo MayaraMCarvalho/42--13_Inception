@@ -6,7 +6,7 @@
 #    By: macarval <macarval@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/19 16:33:22 by macarval          #+#    #+#              #
-#    Updated: 2024/05/28 10:37:32 by macarval         ###   ########.fr        #
+#    Updated: 2024/05/29 15:28:15 by macarval         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ WP_NAME			= wordpress
 MDB_NAME		= mariadb
 STAT_NAME		= static
 
-all:		volumes hosts up
+all:		srcs/.env volumes hosts up
 			@echo "\n"
 			@echo "${GREEN}#-------------------------------------------------------------------------------#${NC}"
 			@echo "${GREEN}#\t\tWelcome to ${NAME} by ${USER}\t\t\t\t#${NC}"
