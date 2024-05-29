@@ -2,7 +2,7 @@ FROM		debian:oldstable
 
 # Update and upgrade system & install Redis
 RUN			apt -y update && apt -y upgrade
-RUN			apt -y install redis-server redis-tools
+RUN			apt -y install redis-server redis-tools procps
 
 # Expose port
 EXPOSE		6379
