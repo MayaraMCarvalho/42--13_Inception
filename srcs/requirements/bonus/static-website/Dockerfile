@@ -24,8 +24,7 @@ RUN			chmod 755 /var/www/html
 RUN			chown -R www-data:www-data /var/www/html
 
 #deletar
-COPY 		./conf/https.conf /etc/nginx/conf.d/
-COPY 		./conf/http.conf /etc/nginx/conf.d/
+COPY 		./conf/nginx.conf /etc/nginx/conf.d/
 RUN chmod 644 /etc/ssl/certs/nginx-selfsigned.crt
 RUN chmod 600 /etc/ssl/private/nginx-selfsigned.key
 
