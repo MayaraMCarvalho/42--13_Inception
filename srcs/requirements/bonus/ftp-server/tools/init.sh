@@ -14,10 +14,15 @@ if [ ! -f /usr/local/bin/vsftpd.conf.bak ]; then
     # adduser --disabled-password $FTP_USER --gecos ""
     # mkdir -p /home/$FTP_USER/ftp
 
-    # Verificar se o usuário já existe
+# Verificar se o usuário já existe
 if ! id -u $FTP_USER >/dev/null 2>&1; then
-    # Se o usuário não existir, criar o usuário e seu diretório home
+    # Se o usuário não existir, criar o usuário
     adduser --disabled-password $FTP_USER --gecos ""
+fi
+
+# Verificar se o diretório home já existe
+if [ ! -d "/home/$FTP_USER" ]; then
+    # Se o diretório home não existir, criar o diretório
     mkdir -p /home/$FTP_USER/ftp
 fi
 
