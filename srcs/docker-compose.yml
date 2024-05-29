@@ -40,7 +40,6 @@ services:
         - MYSQL_USER
         - MYSQL_PASSWORD
         - MYSQL_ROOT_PASSWORD
-        - CERTS_CRT # tirar
     networks:
       - inception
     volumes:
