@@ -10,15 +10,17 @@ if [ ! -f /usr/local/bin/vsftpd.conf.bak ]; then
     # Create empty directory for the FTP server
     mkdir -p /var/run/vsftpd/empty
 
-    # Create a user and a home directory for it
-    adduser --disabled-password $FTP_USER --gecos ""
-    #mkdir -p /home/$FTP_USER/ftp
+    # # Create a user and a home directory for it
+    # adduser --disabled-password $FTP_USER --gecos ""
+    # mkdir -p /home/$FTP_USER/ftp
 
-    #exluir se necessário
-    if [ ! -d "/home/$FTP_USER" ]; then
-        mkdir -p /home/$FTP_USER/ftp
-    fi
-    #
+    # Verificar se o usuário já existe
+if ! id -u $FTP_USER >/dev/null 2>&1; then
+    # Se o usuário não existir, criar o usuário e seu diretório home
+    adduser --disabled-password $FTP_USER --gecos ""
+    mkdir -p /home/$FTP_USER/ftp
+fi
+
 
     # Set the user's password
     echo "$FTP_USER:$FTP_PASSWORD" | chpasswd
