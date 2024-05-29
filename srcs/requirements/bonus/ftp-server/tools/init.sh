@@ -34,7 +34,7 @@ if [ ! -f /usr/local/bin/vsftpd.conf.bak ]; then
     chmod 644 /etc/vsftpd.conf
 
     # Unset variables
-    echo $FTP_USER #tirar
+    echo testando $FTP_USER #tirar
     unset FTP_USER
     unset FTP_PASSWORD
 
