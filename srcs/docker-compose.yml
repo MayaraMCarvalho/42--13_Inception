@@ -40,6 +40,8 @@ services:
         - MYSQL_USER
         - MYSQL_PASSWORD
         - MYSQL_ROOT_PASSWORD
+    env_file:
+      - .env
     networks:
       - inception
     volumes:
@@ -57,6 +59,8 @@ services:
         - MYSQL_DATABASE
         - MYSQL_USER
         - MYSQL_PASSWORD
+    env_file:
+      - .env
     networks:
       - inception
     volumes:
@@ -76,6 +80,8 @@ services:
         - DOMAIN_NAME
         - CERTS_KEY
         - CERTS_CRT
+    env_file:
+      - .env
     networks:
       - inception
     ports:
