@@ -30,10 +30,6 @@ RUN			sed -i "s|INSERT_DOMAIN_NAME_HERE|${DOMAIN_NAME}|g" /etc/nginx/conf.d/http
 RUN			chmod 755 /var/www/html
 RUN			chown -R www-data:www-data /var/www/html
 
-#deletar
-RUN chmod 644 /etc/ssl/certs/nginx-selfsigned.crt
-RUN chmod 600 /etc/ssl/private/nginx-selfsigned.key
-
 # Expose ports
 EXPOSE		443
 
