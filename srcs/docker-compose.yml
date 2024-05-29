@@ -141,20 +141,20 @@ services:
       - static:/usr/src/app
     restart: always
 
-  adminer:
-    container_name: adminer
-    image: adminer:42
-    init: true
-    build:
-      context: ./requirements/bonus/adminer
-      dockerfile: Dockerfile
-    networks:
-      - inception
-    volumes:
-      - wordpress:/var/www/html
-    restart: always
-    depends_on:
-      - wordpress
+  # adminer:
+  #   container_name: adminer
+  #   image: adminer:42
+  #   init: true
+  #   build:
+  #     context: ./requirements/bonus/adminer
+  #     dockerfile: Dockerfile
+  #   networks:
+  #     - inception
+  #   volumes:
+  #     - wordpress:/var/www/html
+  #   restart: always
+  #   depends_on:
+  #     - wordpress
 
   cadvisor:
     container_name: cadvisor
