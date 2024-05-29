@@ -12,7 +12,13 @@ if [ ! -f /usr/local/bin/vsftpd.conf.bak ]; then
 
     # Create a user and a home directory for it
     adduser --disabled-password $FTP_USER --gecos ""
-    mkdir -p /home/$FTP_USER/ftp
+    #mkdir -p /home/$FTP_USER/ftp
+
+    #exluir se necessário
+    if [ ! -d "/home/$FTP_USER" ]; then
+        mkdir -p /home/$FTP_USER/ftp
+    fi
+    #
 
     # Set the user's password
     echo "$FTP_USER:$FTP_PASSWORD" | chpasswd
