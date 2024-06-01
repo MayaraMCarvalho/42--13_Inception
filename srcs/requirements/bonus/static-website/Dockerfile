@@ -23,10 +23,5 @@ COPY		./conf/nginx.conf /etc/nginx/conf.d
 RUN			chmod 755 /var/www/html
 RUN			chown -R www-data:www-data /var/www/html
 
-#deletar
-# COPY 		./conf/nginx.conf /etc/nginx/conf.d/
-# RUN chmod 644 /etc/ssl/certs/nginx-selfsigned.crt
-# RUN chmod 600 /etc/ssl/private/nginx-selfsigned.key
-
 # Run the application
 ENTRYPOINT	["nginx", "-g", "daemon off;"]
