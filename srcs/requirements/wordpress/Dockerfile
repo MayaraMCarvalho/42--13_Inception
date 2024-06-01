@@ -14,7 +14,7 @@ RUN			apt -y install wget php7.4-fpm php7.4-mysql mariadb-client
 # ------------------------ BONUS ------------------------#
 # --------------------- Redis Cache ---------------------#
 # *******************************************************#
-RUN			apt -y install php7.4-redis redis-tools
+# RUN			apt -y install php7.4-redis redis-tools
 
 # Configure PHP so it can communicate with NGINX
 RUN			mv /etc/php/7.4/fpm/pool.d/www.conf /etc/php/7.4/fpm/pool.d/www.conf.default
@@ -35,9 +35,9 @@ RUN			bash /usr/local/bin/init.sh
 
 # Copy Wordpress customized content
 RUN			mkdir -p /var/www/html/wp-content/uploads/2024/02/
-# COPY		./conf/uploads/* /var/www/html/wp-content/uploads/2024/02/                              ?????????????
+COPY		./conf/uploads/* /var/www/html/wp-content/uploads/2024/02/
 RUN			chmod -R 755 /var/www/html/wp-content/uploads/
-# RUN			chmod 644 /var/www/html/wp-content/uploads/2024/02/*                              ?????????????
+RUN			chmod 644 /var/www/html/wp-content/uploads/2024/02/*
 RUN			chown -R www-data:www-data /var/www/html/wp-content/uploads/
 
 # Copy Entrypoint script
