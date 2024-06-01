@@ -24,4 +24,4 @@ RUN			chmod 755 /var/www/html
 RUN			chown -R www-data:www-data /var/www/html
 
 # Run the application
-ENTRYPOINT	["nginx", "-g", "daemon off;",  "--baseURL=https://macarval.42.fr/static"]
+ENTRYPOINT	["nginx", "-g", "daemon off;"]
