@@ -23,5 +23,8 @@ COPY		./conf/nginx.conf /etc/nginx/conf.d
 RUN			chmod 755 /var/www/html
 RUN			chown -R www-data:www-data /var/www/html
 
+# Expose port
+EXPOSE		3000
+
 # Run the application
 ENTRYPOINT	["nginx", "-g", "daemon off;"]
