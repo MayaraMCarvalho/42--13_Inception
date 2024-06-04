@@ -15,5 +15,7 @@ RUN			chmod 755 /run/redis
 RUN			cp /etc/redis/redis.conf /etc/redis/redis.conf.bak
 RUN			sed -i 's/bind 127.0.0.1/#bind 127.0.0.1/' /etc/redis/redis.conf
 
+RUN echo "vm.overcommit_memory=1" >> /etc/sysctl.conf
+
 # Run Redis
 ENTRYPOINT	[ "redis-server", "--protected-mode", "no" ]
