@@ -35,6 +35,7 @@ RUN apk update && apk add nginx
 
 COPY ./conf/nginx.conf /etc/nginx/http.d/default.conf
 
-COPY ./static-website/tools /usr/share/nginx/html
+COPY		./tools/index.html /usr/share/nginx/html
+COPY		./tools/imgs /usr/share/nginx/html/imgs
 
 CMD ["nginx", "-g", "daemon off;"]
