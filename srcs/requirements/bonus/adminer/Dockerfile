@@ -13,4 +13,4 @@ COPY		./tools/entrypoint.sh /usr/local/bin/
 RUN			chmod 755 /usr/local/bin/entrypoint.sh
 
 # Run php-fpm
-ENTRYPOINT	[ "bash", "/usr/local/bin/entrypoint.sh"]
+ENTRYPOINT	[ "bash", "/usr/local/bin/entrypoint.sh" ]
