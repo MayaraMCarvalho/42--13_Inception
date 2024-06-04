@@ -19,7 +19,7 @@ wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar -
 chmod +x /usr/local/bin/wp
 
 # Configure WordPress
-mv /var/www/html/wp-config-sample.php /var/www/html/wp-config.php
+mv /var/www/html/wp-config-sample.php /var/www/html/wordpress/wp-config.php
 wp config set DB_NAME $MYSQL_DATABASE --allow-root --path=/var/www/html/
 wp config set DB_USER $MYSQL_USER --allow-root --path=/var/www/html/
 wp config set DB_PASSWORD $MYSQL_PASSWORD --allow-root --path=/var/www/html/
