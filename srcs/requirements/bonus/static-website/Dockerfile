@@ -26,8 +26,5 @@ RUN			chown -R www-data:www-data /var/www/html
 # Expose port
 EXPOSE		3000
 
-# deletar se não funcionar
-RUN -d -p 4242:4242 --name static static
-
 # Run the application
 ENTRYPOINT	["nginx", "-g", "daemon off;"]
