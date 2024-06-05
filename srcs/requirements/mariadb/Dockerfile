@@ -11,7 +11,7 @@ ARG			MYSQL_ROOT_PASSWORD
 RUN			apt -y update && apt -y upgrade
 RUN			apt -y install mariadb-server mariadb-client
 
-#allow mysqld daemon to run, purge and recreate /var/lib/mysql with appropriate ownership
+# Allow mysqld daemon to run, purge and recreate /var/lib/mysql with appropriate ownership
 RUN			mkdir -p /var/lib/mysql /var/run/mysqld
 RUN			chown -R mysql:mysql /var/lib/mysql /var/run/mysqld
 RUN			chmod 777 /var/run/mysqld
@@ -23,7 +23,8 @@ COPY		./conf/dump.sql /usr/local/bin/
 
 # Execute MariaDB Initialization script
 COPY		./tools/init.sh /usr/local/bin/
-RUN			bash /usr/local/bin/init.sh
+# RUN			bash /usr/local/bin/init.sh // voltar caso não funcione
+RUN			chmod +x bash /usr/local/bin/init.sh
 
 # Expose port to the host
 EXPOSE		3306
