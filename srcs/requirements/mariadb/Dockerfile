@@ -29,5 +29,10 @@ RUN			chmod +x /usr/local/bin/init.sh
 # Expose port to the host
 EXPOSE		3306
 
+#
+# Execute MariaDB Initialization script
+RUN /usr/local/bin/init.sh
+#
+
 # Run MariaDB
 ENTRYPOINT	[ "mysqld_safe" ]
