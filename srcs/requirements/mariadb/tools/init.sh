@@ -22,7 +22,6 @@
 # service mariadb stop
 
 
-
 #!/bin/bash
 
 service mariadb start
@@ -37,7 +36,8 @@ mariadb -u root -e "FLUSH PRIVILEGES;"
 mariadb -u root $MYSQL_DATABASE < /usr/local/bin/dump.sql
 
 # Set password for root user
-mariadb -u root -e "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('$MYSQL_ROOT_PASSWORD');"
+mariadb -u root -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '$MYSQL_ROOT_PASSWORD';"
+mariadb -u root -e "ALTER USER 'root'@'%' IDENTIFIED BY '$MYSQL_ROOT_PASSWORD';"
 mariadb -u root -e "FLUSH PRIVILEGES;"
 
 # Allow root user to login from any host with the specified password
