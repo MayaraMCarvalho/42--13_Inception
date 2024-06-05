@@ -25,10 +25,8 @@ COPY		./conf/dump.sql /usr/local/bin/
 COPY		./tools/init.sh /usr/local/bin/
 RUN			bash /usr/local/bin/init.sh
 
-#
 # Define user
 USER mysql
-#
 
 # Expose port to the host
 EXPOSE		3306
