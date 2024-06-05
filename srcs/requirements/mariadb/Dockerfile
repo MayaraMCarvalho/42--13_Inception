@@ -24,7 +24,7 @@ COPY		./conf/dump.sql /usr/local/bin/
 # Execute MariaDB Initialization script
 COPY		./tools/init.sh /usr/local/bin/
 # RUN			bash /usr/local/bin/init.sh // voltar caso não funcione
-RUN			chmod +x bash /usr/local/bin/init.sh
+RUN			chmod +x /usr/local/bin/init.sh
 
 # Expose port to the host
 EXPOSE		3306
