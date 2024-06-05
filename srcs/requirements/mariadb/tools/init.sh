@@ -2,6 +2,11 @@
 
 service mariadb start
 
+#
+# Set global require_secure_password to ON
+mariadb -u root -e "SET GLOBAL require_secure_password = ON;"
+#
+
 # Create and import WordPress database
 mariadb -u root -e "CREATE DATABASE IF NOT EXISTS $MYSQL_DATABASE;"
 mariadb -u root -e "CREATE USER IF NOT EXISTS '$MYSQL_USER'@'%' IDENTIFIED BY '$MYSQL_PASSWORD';"
